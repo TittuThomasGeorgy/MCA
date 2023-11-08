@@ -1,36 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node{
+struct node{
  int data;
- struct Node *rt,*lt;
+ struct node *rt,*lt;
 };
 
-struct Node *insert(struct Node *node)
+struct node *insert(struct node *node, int x)
 {
-      int x;
-  printf("\n Enter new node element :");
-  scanf("%d", &x);
-  struct Node *new_child= (struct Node *) malloc(sizeof(struct Node));
-   struct Node *tmp;
-  new_child->rt=NULL;
-  new_child->lt=NULL;
-  new_child->data=x;
-  tmp=node;
-  while(tmp->rt!=NULL && tmp->lt!=NULL)
-  {
-    if(new_child->data > tmp->data)
-     tmp=tmp->rt;
-    else if(new_child->data < tmp->data)
-     tmp=tmp->lt;
+  if (node == NULL) {
+        struct node* new_node = (struct node*)malloc(sizeof(struct node));
+        new_node->data = x;
+        new_node->lt = NULL;
+        new_node->rt = NULL;
+        return new_node;
+    }
+  
+    if(x > node->data)
+     node->rt=insert(node->rt,x);
+    else if(x < node->data)
+     node->lt=insert(node->lt,x);
     else
      printf("duplicate value");
-  }
-  tmp=new_child;
-  return tmp;
+//  if(new_child->data > tmp->data)
+//      tmp->rt=new_child;
+//  else if(new_child->data < tmp->data)
+//      tmp->lt=new_child;
+  return node;
 }
 
-void inorder(struct Node *node)
+void inorder(struct node *node)
 {
   if(node!=NULL){
     inorder(node->lt);
@@ -43,7 +42,7 @@ void inorder(struct Node *node)
 void main()
 {
   int ch;
-  struct Node *root= NULL;
+  struct node *root= NULL;
   while (1)
   {
     printf("\n\n 1.Insert \n 2.Display \n 3.Exit \nEnter your Choice:");
@@ -52,7 +51,10 @@ void main()
     {
     case 1:
     {
-      root=insert(root);
+      int x;
+  printf("\n Enter new node element :");
+  scanf("%d", &x);
+      root=insert(root,x);
       break;
     }
     case 2:
