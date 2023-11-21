@@ -78,7 +78,7 @@ void display(int a[])
    printf("%d ", a[i]);
 }
 
-void main()
+int main()
 {
   int a[10], ch;
   printf("\n Enter MAX size of queue:");
@@ -118,4 +118,5 @@ void main()
       printf("!!! Invalid Choice !!!");
     }
   }
+  return 0;
 }

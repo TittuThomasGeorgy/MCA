@@ -39,7 +39,7 @@ void inorder(struct node *node)
   }
 }
 
-void main()
+int main()
 {
   int ch;
   struct node *root= NULL;
@@ -71,4 +71,5 @@ void main()
       printf("!!! Invalid Choice !!!");
     }
   }
+  return 0;
 }

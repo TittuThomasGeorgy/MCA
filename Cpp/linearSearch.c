@@ -10,7 +10,7 @@ int search(int a[],int n,int i)
  return -1;
 }
 
-void main()
+int main()
 {
  int a[50],n,m,index;
  printf("Enter size of array:");
@@ -34,5 +34,6 @@ void main()
   printf("\n Element %d found at  index: %d,  position:%d \n",m,index,index+1);
  else
   printf("\n !!! Element not Found !!! \n");
+  return 0;
 }
 
