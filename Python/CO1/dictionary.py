@@ -1,5 +1,9 @@
-dict={ 'emma': '22', 'roz': '11', 'john': '1', 'alice': '90','rook': '45'}
+dict={ 'name': '', 'Age': '', 'gender': '', 'place': ''}
 
+dict['name']=input("Enter Name:")
+dict['Age']=input("Enter Age:")
+dict['gender']=input("Enter Gender:")
+dict['place']=input("Enter Place:")
 
 print("Ascending:")
 print('sorted by key:',sorted(dict.items()))

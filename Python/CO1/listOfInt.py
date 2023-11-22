@@ -7,6 +7,7 @@ m=int(input('Enter size of l2: '))
 print('Enter elements of l1: ')
 for i in range(0,n):
     l1.append(int(input()))
+    
 print('Enter elements of l2: ')
 for i in range(0,m):
     l2.append(int(input()))
