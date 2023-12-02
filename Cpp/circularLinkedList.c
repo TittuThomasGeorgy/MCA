@@ -4,7 +4,7 @@
 struct Node
 {
     int data;
-    struct Node *nxt, *prev;
+    struct Node *ptr;
 };
 
 struct Node *head = NULL;
@@ -12,6 +12,7 @@ int n = 0;
 
 void display()
 {
+    int count = 0;
     if (head == NULL)
     {
         printf("Empty list");
@@ -20,21 +21,11 @@ void display()
     printf("\n\n  Head: %d No of ele: %d ", head, n);
     printf("\n List elements:\n");
     struct Node *tmp = head;
-    printf("\n Forward");
-    while (tmp->nxt != NULL)
+    for (int i = 0; i < n; i++)
     {
-        printf("<-> %d ", tmp->data);
-        tmp = tmp->nxt;
+        printf("%d -> ", tmp->data);
+        tmp = tmp->ptr;
     }
-    printf("<-> %d ", tmp->data);
-    printf("\n Back");
-    while (tmp != NULL)
-    {
-        printf("<-> %d  ", tmp->data);
-        tmp = tmp->prev;
-    }
-    // tmp = tmp->prev;
-    // printf("<-> %d ", tmp->data);
 }
 
 void insertAtBeg()
@@ -45,16 +36,9 @@ void insertAtBeg()
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
     new_node->data = x;
     if (head == NULL)
-    {
-        new_node->nxt = NULL;
-        new_node->prev = NULL;
-    }
+        new_node->ptr = new_node;
     else
-    {
-        new_node->nxt = head;
-        (new_node->nxt)->prev = new_node;
-    }
-    new_node->prev = NULL;
+        new_node->ptr = head;
     head = new_node;
     n++;
     printf("\n Element inserted at Begining");
@@ -67,12 +51,11 @@ void insertAtEnd()
     scanf("%d", &x);
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
     new_node->data = x;
-    new_node->nxt = NULL;
+    new_node->ptr = head;
     struct Node *tmp = head;
-    while (tmp->nxt != NULL)
-        tmp = tmp->nxt;
-    new_node->prev = tmp;
-    tmp->nxt = new_node;
+    while (tmp->ptr != NULL)
+        tmp = tmp->ptr;
+    tmp->ptr = new_node;
     n++;
     printf("\n Element inserted at End");
 }
@@ -102,19 +85,15 @@ void insertAtPos()
         scanf("%d", &x);
         struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
         new_node->data = x;
-        new_node->nxt = NULL;
-        new_node->prev = NULL;
-
+        new_node->ptr = NULL;
         struct Node *tmp = head;
         while (count < pos - 1)
         {
-            tmp = tmp->nxt;
+            tmp = tmp->ptr;
             count++;
         }
-        new_node->nxt = tmp->nxt;
-        (tmp->nxt)->prev = new_node;
-        new_node->prev = tmp;
-        tmp->nxt = new_node;
+        new_node->ptr = tmp->ptr;
+        tmp->ptr = new_node;
         n++;
         printf("\n Element inserted at Position %d", pos);
     }
@@ -158,24 +137,11 @@ void insertion()
         printf("!!! Invalid Choice !!!");
     }
 }
-
 void deleteBeg()
 {
     struct Node *tmp;
-    if (head == NULL)
-    {
-        printf("\n Empty List");
-        return;
-    }
     tmp = head;
-    if (tmp->nxt == NULL)
-        head = NULL;
-    else
-    {
-        tmp->nxt->prev = NULL;
-        head = tmp->nxt;
-    }
-    tmp->nxt = NULL;
+    head = tmp->ptr;
     n--;
     free(tmp);
     printf("\n Element deleted from Begining");
@@ -183,17 +149,12 @@ void deleteBeg()
 
 void deleteEnd()
 {
-     if (head == NULL)
-    {
-        printf("\n Empty List");
-        return;
-    }
     struct Node *tmp1 = head;
     struct Node *tmp2 = NULL;
-    while (tmp1->nxt->nxt != NULL)
-        tmp1 = tmp1->nxt;
-    tmp2 = tmp1->nxt;
-    tmp1->nxt = NULL;
+    while (tmp1->ptr->ptr != NULL)
+        tmp1 = tmp1->ptr;
+    tmp2 = tmp1->ptr;
+    tmp1->ptr = head;
     printf("\n Element Deleted at End: %d", tmp2->data);
     free(tmp2);
     n--;
@@ -223,13 +184,12 @@ void deletePos()
         struct Node *tmp = head;
         while (count < pos - 1)
         {
-            tmp = tmp->nxt;
+            tmp = tmp->ptr;
             count++;
         }
         struct Node *tmp2 = NULL;
-        tmp2 = tmp->nxt;
-        tmp->nxt->nxt->prev = tmp2->prev;
-        tmp->nxt = tmp2->nxt;
+        tmp2 = tmp->ptr;
+        tmp->ptr = tmp->ptr->ptr;
         printf("\n Element Deleted at Pos %d : %d  ", pos, tmp2->data);
         free(tmp2);
         n--;
@@ -283,7 +243,7 @@ void peek()
     struct Node *tmp = head;
     while (count < pos - 1)
     {
-        tmp = tmp->nxt;
+        tmp = tmp->ptr;
         count++;
     }
     printf("\n Element at Pos %d : %d  ", pos, tmp->data);
