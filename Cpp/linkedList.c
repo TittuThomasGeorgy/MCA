@@ -86,11 +86,8 @@ void insertAtPos()
         new_node->data = x;
         new_node->ptr = NULL;
         struct Node *tmp = head;
-        while (count < pos - 1)
-        {
+        for (int i = 0; i < pos - 1; i++)
             tmp = tmp->ptr;
-            count++;
-        }
         new_node->ptr = tmp->ptr;
         tmp->ptr = new_node;
         n++;
@@ -239,13 +236,13 @@ void peek()
     int x, pos, count = 0;
     printf("\n Enter position to peek:");
     scanf("%d", &pos);
-     struct Node *tmp = head;
-        while (count < pos -1)
-        {
-            tmp = tmp->ptr;
-            count++;
-        }
-        printf("\n Element at Pos %d : %d  ", pos, tmp->data);
+    struct Node *tmp = head;
+    while (count < pos - 1)
+    {
+        tmp = tmp->ptr;
+        count++;
+    }
+    printf("\n Element at Pos %d : %d  ", pos, tmp->data);
 }
 
 int main()
