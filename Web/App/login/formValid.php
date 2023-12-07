@@ -1,5 +1,5 @@
 <?php
-require "dbcon.php";
+require "../common/dbcon.php";
 $nm = $_POST["name"];
 $unm = $_POST["username"];
 $ps1 = $_POST["pass1"];

@@ -18,12 +18,12 @@ void display()
         printf("Empty list");
         return;
     }
-    printf("\n\n  Head: %d No of ele: %d ", head, n);
-    printf("\n List elements:\n");
+    printf("\n\n  Head: %d  No of ele: %d \n", head, n);
+    // printf("\n List elements:\n");
     struct Node *tmp = head;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n * 2; i++)
     {
-        printf("%d -> ", tmp->data);
+        printf("%d -> %d | %d  \n", tmp, tmp->data, tmp->ptr);
         tmp = tmp->ptr;
     }
 }
@@ -38,7 +38,13 @@ void insertAtBeg()
     if (head == NULL)
         new_node->ptr = new_node;
     else
+    {
         new_node->ptr = head;
+        struct Node *tmp = head;
+        for (int i = 0; i < n; i++)
+            tmp = tmp->ptr;
+        tmp->ptr = new_node;
+    }
     head = new_node;
     n++;
     printf("\n Element inserted at Begining");
@@ -46,19 +52,32 @@ void insertAtBeg()
 
 void insertAtEnd()
 {
+    if (head == NULL)
+    {
+        insertAtBeg();
+        return;
+    }
     int x;
     printf("\n Enter element to insert:");
     scanf("%d", &x);
+    printf("\n BEfore insert:");
+    display();
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
     new_node->data = x;
     new_node->ptr = head;
     struct Node *tmp = head;
-    while (tmp->ptr != NULL)
+    for (int i = 0; i < n-1; i++){
+        printf("\n 0%d - %d -> %d|%d",i,tmp,tmp->data, tmp->ptr);
         tmp = tmp->ptr;
+    }
     tmp->ptr = new_node;
     n++;
+    printf("\n 1After insert:");
+
+    display();
     printf("\n Element inserted at End");
 }
+
 void insertAtPos()
 {
     int x, pos, count = 0;
@@ -137,11 +156,15 @@ void insertion()
         printf("!!! Invalid Choice !!!");
     }
 }
+
 void deleteBeg()
 {
     struct Node *tmp;
     tmp = head;
     head = tmp->ptr;
+    for (int i = 0; i < n-1; i++)
+        tmp = tmp->ptr;
+    tmp->ptr = head;
     n--;
     free(tmp);
     printf("\n Element deleted from Begining");
