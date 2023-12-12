@@ -30,6 +30,9 @@
         </li>
       </ul>
     </li>
+    <li>
+      <a href="../report/" target="body">Report</a>
+    </li>
 
   </ul>
 </body>

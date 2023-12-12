@@ -13,9 +13,11 @@
       <tr>
         <td><b> KTU Id</b></td>
         <td><b> SUB</b></td>
-        <td><b>Internal 1</b> </td>
-        <td><b>Internal 2</b> </td>
-        <td><b>Series</b> </td>
+        <td><b>Series 1</b> </td>
+        <td><b>Series 2</b> </td>
+        <td><b>Assignment 1</b> </td>
+        <td><b>Assignment 2</b> </td>
+        <td><b>Attendance%</b> </td>
         <!-- <td><b>Sem</b> </td> -->
       </tr>
       <?php
@@ -27,9 +29,11 @@
           echo "<tr>";
           echo "<td>" . $row['ktu_id'] . "</td>  ";
           echo "<td>" . $row['sub'] . "</td>  ";
-          echo "<td>" . $row['internal1'] . "</td>  ";
-          echo "<td>" . $row['internal2'] . "</td>  ";
-          echo "<td>" . $row['series'] . "</td>  ";
+          echo "<td>" . $row['series1'] . "</td>  ";
+          echo "<td>" . $row['series2'] . "</td>  ";
+          echo "<td>" . $row['assignment1'] . "</td>  ";
+          echo "<td>" . $row['assignment1'] . "</td>  ";
+          echo "<td>" . $row['attendance'] . "</td>  ";
           // echo "<td>" . $row['sem'] . "</td>  ";
           echo "</tr>";
         }

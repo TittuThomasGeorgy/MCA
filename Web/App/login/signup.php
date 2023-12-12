@@ -1,4 +1,5 @@
-<?php require "dbcon.php";?>
+<?php require "../common/dbcon.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 

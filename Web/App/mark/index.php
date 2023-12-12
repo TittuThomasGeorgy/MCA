@@ -29,19 +29,35 @@ $exc = mysqli_query($con, $sq);
             </tr>
             <tr>
                 <td>Sub</td>
-                <td><input type="text" name="sub"></td>
+                <td> <select name="sub" id="">
+                        <?php
+                        $sq = "SELECT `sub` FROM `subject` ORDER BY `sub` ASC;";
+                        $exc = mysqli_query($con, $sq);
+                        while ($row = mysqli_fetch_assoc($exc)) {
+                            echo "<option value='" . $row['sub'] . "'>" . $row['sub'] . "</option>";
+                        }
+                        ?>
+                    </select></td>
             </tr>
             <tr>
-                <td>Internal 1</td>
-                <td><input type="text" name="int1"></td>
+                <td>Series 1</td>
+                <td><input type="text" name="ser1"></td>
             </tr>
             <tr>
-                <td>Internal 2</td>
-                <td><input type="text" name="int2"></td>
+                <td>Series 2</td>
+                <td><input type="text" name="ser2"></td>
             </tr>
             <tr>
-                <td>Series</td>
-                <td><input type="text" name="series"></td>
+                <td>Assignment 1</td>
+                <td><input type="text" name="asgn1"></td>
+            </tr>
+            <tr>
+                <td>Assignment 2</td>
+                <td><input type="text" name="asgn2"></td>
+            </tr>
+            <tr>
+                <td>Attendance %</td>
+                <td><input type="text" name="attd"></td>
             </tr>
             <tr>
                 <td colspan="2"> <input type="submit" value="Submit" name="submit" /></td>

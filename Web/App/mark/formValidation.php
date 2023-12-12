@@ -2,9 +2,11 @@
 require "../common/dbcon.php";
 $id = $_POST['id'];
 $sub = $_POST['sub'];
-$int1 = $_POST['int1'];
-$int2 = $_POST['int2'];
-$series = $_POST['series'];
+$ser1 = $_POST['ser1'];
+$ser2 = $_POST['ser2'];
+$asgn1 = $_POST['asgn1'];
+$asgn2 = $_POST['asgn2'];
+$attd = $_POST['attd'];
 // $sq = "SELECT * FROM `stud` WHERE `ktu_id` = '$id' ";
 // echo $sq1;
 // $exc1 = mysqli_query($con, $sq1);
@@ -18,7 +20,7 @@ $series = $_POST['series'];
 
 //     ";
 // } else {
-$sq = "INSERT INTO `mark` (`ktu_id`, `sub`, `internal1`, `internal2`, `series`)  VALUES ('$id ', '$sub', '$int1','$int2 ',  '$series');";
+$sq = "INSERT INTO `mark` (`ktu_id`, `sub`,`series1`, `series2`, `assignment1`,`assignment2`,`attendance`)  VALUES ('$id ', '$sub', '$ser1','$ser2 ', '$asgn1','$asgn2','$attd');";
 echo $sq;
 $exc = mysqli_query($con, $sq);
 if ($exc) {

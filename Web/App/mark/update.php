@@ -55,26 +55,38 @@ $exc = mysqli_query($con, $sq);
                         </tr>
                         <tr>
                             <td>Sub</td>
-                            <td><input type="text" name="sub" value=<?php
-                                                                    echo  $row['sub'];
-                                                                    ?> readonly></td>
+                            <td> <select name="sub" id="">
+                                    <?php echo "<option value='". $row['sub'] . "'>" . $row['sub']." </option>";?>
+                                </select></td>
                         </tr>
                         <tr>
-                            <td>Internal 1</td>
-                            <td><input type="text" name="int1" value=<?php
-                                                                        echo  $row['internal1'];
+                            <td>Series 1</td>
+                            <td><input type="text" name="ser1" value=<?php
+                                                                        echo  $row['series1'];
                                                                         ?>></td>
                         </tr>
                         <tr>
-                            <td>Internal 2</td>
-                            <td><input type="text" name="int2" value=<?php
-                                                                        echo  $row['internal2'];
+                            <td>Series 2</td>
+                            <td><input type="text" name="ser2" value=<?php
+                                                                        echo  $row['series2'];
                                                                         ?>></td>
                         </tr>
                         <tr>
-                            <td>Series</td>
-                            <td><input type="text" name="series" value=<?php
-                                                                        echo  $row['series'];
+                            <td>Assignment 1</td>
+                            <td><input type="text" name="asgn1" value=<?php
+                                                                        echo  $row['assignment1'];
+                                                                        ?>></td>
+                        </tr>
+                        <tr>
+                            <td>Assignment 2</td>
+                            <td><input type="text" name="asgn2" value=<?php
+                                                                        echo  $row['assignment2'];
+                                                                        ?>></td>
+                        </tr>
+                        <tr>
+                            <td>Attendance</td>
+                            <td><input type="text" name="attd" value=<?php
+                                                                        echo  $row['attendance'];
                                                                         ?>></td>
                         </tr>
                         <tr>
